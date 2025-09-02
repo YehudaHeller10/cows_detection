@@ -1,6 +1,6 @@
 # Cow Pose / Station Detection
 
-![example detection](assets/example_detection.jpg)
+![example detection](example.png)
 
 Overview
 --------
@@ -150,4 +150,5 @@ Troubleshooting
 - Model load errors: ensure ultralytics and torch versions are compatible and .pt path is correct.
 - No detections: model must be trained for "pose" (check kpt_shape and kpt_names in data.yaml).
 - Slow inference / OOM errors: switch to smaller model, lower imgsz, reduce workers.
+
 
