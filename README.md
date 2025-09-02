@@ -1,6 +1,6 @@
 # Cow Pose / Station Detection
 
-![example detection](assets/example_detection.jpg)
+![example detection](example.png)
 
 Overview
 --------
@@ -139,3 +139,4 @@ Contact / next steps
 --------------------
 - If you want, the README can be extended with example label files, a sample requirements.txt, or a short notebook showing training curves and evaluation metrics.
 - Replace assets/example_detection.jpg with an example visualization (detected boxes + keypoints + station numbers).
+
