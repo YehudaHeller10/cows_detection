@@ -1,4 +1,4 @@
-path: C:/Users/yehudah/OneDrive - ARO Volcani Center/Desktop/train on other dataset/downloaded_dataset
+path: C:\Users\yehudah\OneDrive - ARO Volcani Center\Desktop\auto_labeling_2
 train: images/train
 val: images/val
 
