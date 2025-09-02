@@ -1,0 +1,9 @@
+path: C:\Users\yehudah\OneDrive - ARO Volcani Center\Desktop\auto_labeling_2
+train: images/train
+val: images/val
+
+nc: 1
+names: ["cow_face"]
+
+kpt_shape: [5, 3]
+kpt_names: ["left_eye", "right_eye", "center_nose", "left_mouth", "right_mouth"]
