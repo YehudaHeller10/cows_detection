@@ -1,7 +1,0 @@
-path: C:\Users\yehudah\Desktop\cows_detectoion\dataset  # נתיב יחסי מהמיקום של data.yaml
-
-train: images/train
-val: images/val
-
-nc: 1  # מספר מחלקות (למשל, ראשי פרות = 1)
-names: ['head']  # שמות המחלקות
