@@ -1,6 +1,6 @@
 # Cow Pose / Station Detection
 
-![example detection](example.png)
+![example detection](assets/example_detection.jpg)
 
 Overview
 --------
@@ -119,6 +119,26 @@ Examples
 - Start the annotator and export labels for training:
   python my_auto_labeling_with_change_option.py
 
+Large-scale runs & research use
+------------------------------
+
+- Cow_location_extractor_cli.py is designed for large-batch processing and can be tuned for very large datasets. It has been used to process ~600,000 images in a single project, exporting per-folder CSV files with one row per detected cow.
+- Each image is expected to contain up to 12 cows (one per station in the monitored setup). The extractor assigns detections to stations and writes: image_name, station_number, face bbox (xyxy) and the five keypoint coordinates.
+- Hardware notes: the extractor supports multiprocessing and will fall back to CPU if CUDA is unavailable; when using GPU, limit worker count to avoid contention (the CLI defaults to one GPU worker).
+- Data sharing policy: trained weights, raw CSV exports and downstream analysis produced within an institutional research project ( Volcani Center ) are not included in this repository.
+
+Saved CSV structure
+-------------------
+The extractor outputs CSV files where each row corresponds to a single detected cow. The columns are listed below (shown as they appear in the CSV header):
+
+| image_name | station_number | cow_face_x1 | cow_face_y1 | cow_face_x2 | cow_face_y2 | left_eye_x | left_eye_y | right_eye_x | right_eye_y | center_nose_x | center_nose_y | left_mouth_x | left_mouth_y | right_mouth_x | right_mouth_y |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| filename (string) | station id (int) | bbox x1 (int) | bbox y1 (int) | bbox x2 (int) | bbox y2 (int) | left eye x (int or empty) | left eye y (int or empty) | right eye x (int or empty) | right eye y (int or empty) | nose x (int or empty) | nose y (int or empty) | left mouth x (int or empty) | left mouth y (int or empty) | right mouth x (int or empty) | right mouth y (int or empty) |
+
+Example CSV header (tab/CSV-compatible):
+
+image_name	station_number	cow_face_x1	cow_face_y1	cow_face_x2	cow_face_y2	left_eye_x	left_eye_y	right_eye_x	right_eye_y	center_nose_x	center_nose_y	left_mouth_x	left_mouth_y	right_mouth_x	right_mouth_y
+
 Repository maintenance
 ----------------------
 - Keep best weights under runs/pose/ and update MODEL_PATH constants in GUI scripts to point to current best.pt
@@ -130,13 +150,4 @@ Troubleshooting
 - Model load errors: ensure ultralytics and torch versions are compatible and .pt path is correct.
 - No detections: model must be trained for "pose" (check kpt_shape and kpt_names in data.yaml).
 - Slow inference / OOM errors: switch to smaller model, lower imgsz, reduce workers.
-
-License
--------
-Add a LICENSE file at repo root (e.g., MIT). Check and respect licenses of pretrained weights used.
-
-Contact / next steps
---------------------
-- If you want, the README can be extended with example label files, a sample requirements.txt, or a short notebook showing training curves and evaluation metrics.
-- Replace assets/example_detection.jpg with an example visualization (detected boxes + keypoints + station numbers).
 
