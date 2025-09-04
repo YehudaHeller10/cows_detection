@@ -7,7 +7,7 @@ import numpy as np
 import time
 
 # --- Constants ---
-# IMPORTANT: Update this path to where your model file is located
+
 #MODEL_PATH = r"C:\Users\yehudah\OneDrive - ARO Volcani Center\Desktop\train on other dataset\runs\pose\cow_pose_yolov8m\weights\best.pt"
 MODEL_PATH = r"C:\Users\yehudah\OneDrive - ARO Volcani Center\Desktop\train on other dataset\runs\pose\fine_tuned_on_my_data3\weights\best.pt"
 
@@ -557,4 +557,5 @@ class App:
 if __name__ == "__main__":
     root = tk.Tk()
     app = App(root)
+
     root.mainloop()
